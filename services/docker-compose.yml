@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  api:
+    image: emilevauge/whoami
+    networks:
+      - api
+    labels:
+      - "traefik.backend=api-intraway"
+      - "traefik.frontend.rule=Host:api.intraway.com"
+
+networks:
+  api:
+    external:
+      name: proxy_gateway
